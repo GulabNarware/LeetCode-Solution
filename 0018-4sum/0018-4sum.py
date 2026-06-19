@@ -5,45 +5,38 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
+
         nums.sort()
-        res=[]
         n=len(nums)
-        for i in range(n):
+        res=[]
 
-            if i!=0 and nums[i]==nums[i-1]:
+        for first in range(n):
+            if first!=0 and nums[first-1]==nums[first]:
                 continue
-
-            for j in range(i+1,n):
-                if j>i+1 and nums[j]==nums[j-1]:
+            for second in range(first+1,n):
+                if second-1!=first and nums[second-1] ==nums[second]:
                     continue
-
-                left=j+1
-                right=n-1
-
-                while left<right:
-                    totalsum=nums[i]+ nums[j] + nums[left]+ nums[right]
-
-                    if totalsum<target:
-                        left+=1
-
-                    elif totalsum>target:
-                        right-=1
-
+                third=second+1
+                last=n-1
+                while third<last:
+                    temp= nums[first]+nums[second]+nums[third]+nums[last]
+                    if temp<target:
+                        third+=1
+                    elif temp>target:
+                        last-=1
                     else:
-
-                        temp=[nums[i],nums[j],nums[left],nums[right]]
-
-                        res.append(temp)
-                        left+=1
-                        right-=1
-
-                        while left<right and nums[left-1]==nums[left]:
-                            left+=1
-
-                        while left<right and nums[right+1]==nums[right]:
-                            right-=1
+                        res.append([nums[first],nums[second],nums[third],nums[last]])
+                        third+=1
+                        last-=1
+                        while third<last and nums[third-1]== nums[third]:
+                            third+=1
+                        while last>third and nums[last+1]==nums[last]:
+                            last-=1
 
         return res
+
+
+
 
                 
 
