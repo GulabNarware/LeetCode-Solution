@@ -4,47 +4,42 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-
         res=[]
-        
-        i=0
-        n=len(nums)
+
         nums.sort()
 
-        for i in range(n):
-            
-            #skips the duplicate
-            if i!=0 and nums[i]==nums[i-1]:
+        n=len(nums)
+
+        for first in range(len(nums)):
+
+            if first!=0 and nums[first-1]==nums[first]:
                 continue
+        
 
-            #two pointer
-            j=i+1
-            k=n-1
+            second=first+1
 
-            while j<k:
+            last=n-1
 
-                totalsum=nums[i]+nums[j]+nums[k]
-
-                if totalsum<0:
-                    j+=1
-
-                elif totalsum>0:
-                    k-=1
-
+            while second<last:
+                
+                
+                temp_res=nums[first]+nums[second]+nums[last]
+                if temp_res>0:
+                    last-=1
+                elif temp_res <0:
+                    second+=1
                 else:
+                    temp=[nums[first],nums[second],nums[last]]
 
-                    temp=[nums[i],nums[j],nums[k]]
                     res.append(temp)
 
-                    j+=1
-                    k-=1
-                    while j<k and nums[j]==nums[j-1]:
-                        j+=1
+                    second+=1
+                    last-=1
 
-                    while k>j and nums[k]==nums[k+1]:
-                        k-=1
+                    while nums[second-1]==nums[second] and second<last:
+                        second+=1
 
+                    while nums[last+1]==nums[last] and last>second:
+                        last-=1
+            
         return res
-
-
-
