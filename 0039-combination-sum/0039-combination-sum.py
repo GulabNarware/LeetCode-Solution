@@ -14,9 +14,9 @@ class Solution:
             sum_ele=total+candidates[ind]
             sol.append(candidates[ind])
             solve(ind,sum_ele,sol)
-            e=sol.pop()
-            sum_ele=sum_ele-e
-            solve(ind+1,sum_ele,sol)
+            sol.pop()
+            
+            solve(ind+1,total,sol)
         solve(0,0,[])
         return res
 
