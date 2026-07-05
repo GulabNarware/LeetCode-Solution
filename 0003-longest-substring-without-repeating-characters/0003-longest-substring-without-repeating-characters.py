@@ -19,16 +19,10 @@ class Solution:
 
             else:
 
-                while f>sec and s[f] in d:
-
-                    if d[s[sec]]==s[f]:
-                        d.pop(s[sec])
-                        sec+=1
-
-                    else:
-                        d.pop(s[sec])
-                        sec+=1
-
+                while s[f] in d:
+                    d.pop(s[sec])
+                    sec+=1
+                    
                 if s[f] not in d:
                     d[s[f]]=1
 
