@@ -1,104 +1,94 @@
-class MyLinkedList(object):
+class MyLinkedList:
     class Node:
-        def __init__(self, val):
-            self.val = val
-            self.next = None
+        def __init__(self,val):
+            self.val=val
+            self.next=None
+
 
     def __init__(self):
         self.head=None
-        
-    def get(self, index):
-        """
-        :type index: int
-        :rtype: int
-        """
+
+    def get(self, index: int) -> int:
         count =0
         curr=self.head
         while curr:
-            if index ==count:
+            if count ==index:
                 return curr.val
+            curr=curr.next
             count+=1
-            curr=curr.next
         return -1
-    def addAtHead(self, val):
-        """
-        :type val: int
-        :rtype: None
-        """
-        node=MyLinkedList.Node(val)
-        node.next=self.head
-        self.head=node
     
-        
-
-    def addAtTail(self, val):
-        """
-        :type val: int
-        :rtype: None
-        """
-        node=MyLinkedList.Node(val)
-        
+    def addAtHead(self, val: int) -> None:
         if not self.head:
-            self.head = node
-            return
-        curr=self.head
+            self.head=MyLinkedList.Node(val)
+        else:
+            node=MyLinkedList.Node(val)
+            curr=node
+            curr.next=self.head
+            self.head=curr
 
-        while curr.next is not None:
-            curr=curr.next
-        curr.next=node
-    def addAtIndex(self, index, val):
-        """
-        :type index: int
-        :type val: int
-        :rtype: None
-        """
-        if index == 0:
+
+
+    def addAtTail(self, val: int) -> None:
+        if not self.head:
+            self.head=MyLinkedList.Node(val)
+
+        else:
+            curr=self.head
+
+            while curr.next is not None:
+                curr=curr.next
+
+            curr.next=MyLinkedList.Node(val)
+
+    def addAtIndex(self, index: int, val: int) -> None:
+
+        if index==0:
             self.addAtHead(val)
-            return
+            return 
 
         node = MyLinkedList.Node(val)
         curr = self.head
         count = 0
 
-        while curr and count < index - 1:
-            curr = curr.next
-            count += 1
+        while curr and count < index-1:
+            count +=1
+            curr=curr.next
 
         if not curr:
-            return
+            return 
 
-        node.next = curr.next
-        curr.next = node
-    def deleteAtIndex(self, index):
-        """
-        :type index: int
-        :rtype: None
-        """
+        node.next=curr.next
+        curr.next=node
+
+    def deleteAtIndex(self, index: int) -> None:
+
         if not self.head:
-            return
+            return 
 
-        if index == 0:
-            self.head = self.head.next
-            return
+        if index==0:
+            self.head=self.head.next
 
-        curr = self.head
-        count = 0
+        count =0
+        curr=self.head
 
         while curr and curr.next:
-            if count == index - 1:
-                curr.next = curr.next.next
-                return
-            curr = curr.next
-            count += 1
-        
+            if count ==index-1:
+                curr.next=curr.next.next
+                return 
 
+            curr=curr.next
+            count+=1
+
+
+            
         
 
 
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
 # param_1 = obj.get(index)
-# obj.addAtself.head(val)
+# obj.addAtHead(val)
 # obj.addAtTail(val)
 # obj.addAtIndex(index,val)
 # obj.deleteAtIndex(index)
