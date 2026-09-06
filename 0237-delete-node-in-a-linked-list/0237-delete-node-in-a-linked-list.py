@@ -1,28 +1,25 @@
 # Definition for singly-linked list.
-# class ListNode(object):
+# class ListNode:
 #     def __init__(self, x):
 #         self.val = x
 #         self.next = None
 
-class Solution(object):
+class Solution:
     def deleteNode(self, node):
         """
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
         prev=None
-        curr=node
+        while node.next is not None:
+            prev=node
+            node=node.next
 
-        while curr.next is not None:
-            prev=curr
-
-            curr=curr.next
-
-            prev.val=curr.val
+            prev.val=node.val
 
         prev.next=None
 
+        
 
 
-            
         
