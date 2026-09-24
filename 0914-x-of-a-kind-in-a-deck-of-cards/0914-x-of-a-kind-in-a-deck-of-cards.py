@@ -1,44 +1,16 @@
-class Solution(object):
-    def hasGroupsSizeX(self, deck):
-        """
-        :type deck: List[int]
-        :rtype: bool
-        """
-        
-        # d={}
-
-        # for i in deck:
-        #     d[i]=d.get(i,0)+1
-
-        # m=min(d.values())
-        # if m>1:
-        #     for j in range(2,m+1):
-        #         for count in d.values():
-        #             if count%j!=0:
-        #                 break
-
-        #         else:
-        #             return True
-        # else:
-        #     return False
-
-
-   
-
-        d = {}
+class Solution:
+    def hasGroupsSizeX(self, deck: list[int]) -> bool:
+        h={}
 
         for i in deck:
-            d[i] = d.get(i, 0) + 1
+            h[i]=h.get(i,0)+1
+        check=min(h.values())
 
-        m = min(d.values())
-
-        if m > 1:
-            for j in range(2, m + 1):
-
-                for count in d.values():
-                    if count % j != 0:
+        if check>1:
+            for div in range(2,check+1):
+                for c in h.values():
+                    if c%div!=0:
                         break
-
                 else:
                     return True
 
