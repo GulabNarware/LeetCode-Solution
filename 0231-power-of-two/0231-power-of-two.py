@@ -4,7 +4,7 @@ class Solution:
         pw=0
         num=0
 
-        while num<=abs(n):
+        while n>0 and num<=n:
 
             if 2**pw==n:
                 return True
