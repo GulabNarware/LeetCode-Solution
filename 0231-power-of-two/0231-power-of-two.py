@@ -1,25 +1,16 @@
-class Solution(object):
-    def isPowerOfTwo(self, n):
-        """
-        :type n: int
-        :rtype: bool
-        """
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
         
-        # for i in range(32):
-        #     if n>0 and 2**i==n:
-        #         return True
+        pw=0
+        num=0
 
-        #     if n<0 and 2**i == (n):
-        #         return True
+        while num<=abs(n):
 
-        # else:
-        #     return False
-        
+            if 2**pw==n:
+                return True
 
-        if n==0:
-            return False
-        elif n&(n-1)==0:
-            return True
+            pw+=1
 
-        else:
-            return False
+            num=2**pw
+
+        return False
