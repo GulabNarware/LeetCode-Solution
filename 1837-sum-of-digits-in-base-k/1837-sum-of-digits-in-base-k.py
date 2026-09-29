@@ -3,25 +3,19 @@ class Solution:
         def base(n,k):
         
             n1=n
-            num=""
+            result=0
 
             while n1>0:
                 digit=n1%k
 
                 n1=n1//k
 
-                num=num+str(digit)
+                result+=digit
 
-            return int(num[::-1])
+            return result
 
 
         num=base(n,k)
 
-        sum_num=0
 
-        while num>0:
-            digit=num%10
-            sum_num+=digit
-            num=num//10
-
-        return sum_num
+        return num
