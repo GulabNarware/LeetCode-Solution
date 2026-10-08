@@ -1,28 +1,48 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
 
+        result=[]
 
-        res=[]
+        subset=[]
 
-        
+        def sebseq(indx,subset):
 
-        def fun(indx,subset):
-
-            if indx>=len(nums):
-
-                res.append(subset.copy())
+            if indx >= len(nums):
+                result.append(subset.copy())
                 return
 
             subset.append(nums[indx])
-
-            fun(indx+1,subset)
-
+            sebseq(indx+1,subset)
             subset.pop()
 
-            fun(indx+1,subset)
+            sebseq(indx+1,subset)
+
+        sebseq(0,subset)
+
+        return result
 
 
-        fun(0,[])
-        return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
