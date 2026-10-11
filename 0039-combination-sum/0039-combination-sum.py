@@ -5,24 +5,26 @@ class Solution:
 
         count=[]
 
-        def sq(indx,count):
+        def sq(indx,total,count):
             if indx>=len(candidates):
                 return 
 
-            if sum(count)==target:
+            if total==target:
                 result.append(count.copy())
                 return 
 
-            if sum(count)>target:
+            if total>target:
                 return 
+            total+=candidates[indx]
             count.append(candidates[indx])
-            sq(indx,count)
+            sq(indx,total,count)
 
-            count.pop()
+            a=count.pop()
+            total-=a
 
-            sq(indx+1,count)
+            sq(indx+1,total,count)
 
-        sq(0,count)
+        sq(0,0,count)
         return result
 
             
