@@ -1,25 +1,28 @@
 class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res=[]
+    def combinationSum(self, candidates: list[int], target: int) -> list[list[int]]:
+        
+        result=[]
 
-        def solve(ind,total,sol):
+        count=[]
 
-            if ind>=len(candidates):
+        def sq(indx,count):
+            if indx>=len(candidates):
                 return 
-            if target==total:
-                res.append(sol.copy())
-                return 
-            if total>target:
-                return 
-            sum_ele=total+candidates[ind]
-            sol.append(candidates[ind])
-            solve(ind,sum_ele,sol)
-            sol.pop()
-            
-            solve(ind+1,total,sol)
-        solve(0,0,[])
-        return res
 
+            if sum(count)==target:
+                result.append(count.copy())
+                return 
 
+            if sum(count)>target:
+                return 
+            count.append(candidates[indx])
+            sq(indx,count)
+
+            count.pop()
+
+            sq(indx+1,count)
+
+        sq(0,count)
+        return result
 
             
