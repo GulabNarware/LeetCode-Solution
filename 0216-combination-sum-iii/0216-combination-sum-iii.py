@@ -1,34 +1,34 @@
 class Solution:
-    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
-        list_ele=[i for i in range(1,10)]
+    def combinationSum3(self, k: int, n: int) -> list[list[int]]:
+        a=[i for i in range(1,10)]
 
         result=[]
 
-        def backtrack(ind,total,subset):
-
-            if total ==n and len(subset)==k:
-                result.append(subset.copy())
-
+        def sq(indx,total,sub):
+            if indx>=len(a) :
+                if k==len(sub) and total==n:
+                    result.append(sub.copy())
                 return 
 
-            if total>n or len(subset)>k:
+            if n==total and k==len(sub):
+                result.append(sub.copy())
                 return 
 
-            if ind>=len(list_ele):
+            if total> n or len(sub)>k:
                 return 
 
+            sub.append(a[indx])
 
-            subset.append(list_ele[ind])
-            sum_ele=total+list_ele[ind]
+            ele=total+a[indx]
 
-            backtrack(ind+1,sum_ele,subset)
+            sq(indx+1,ele,sub)
 
-            subset.pop()
+            sub.pop()
 
-            backtrack(ind+1,total,subset)
+            sq(indx+1,total,sub)
 
-        backtrack(0,0,[])
+        sq(0,0,[])
+
         return result
 
-
-        
+            
