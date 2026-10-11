@@ -7,10 +7,9 @@ class Solution:
         nums.sort()
         left=0
         right=left+k-1
-
         while right<=len(nums)-1:
-            m=min(nums[left:right+1])
-            h=max(nums[left:right+1])
+            m=nums[left]
+            h=nums[right]
             if n> h-m :
                 n=h-m
             left+=1
