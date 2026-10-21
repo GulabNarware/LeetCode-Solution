@@ -2,18 +2,18 @@ class Solution:
     def checkSubarraySum(self, nums: list[int], k: int) -> bool:
         
         if len(nums)==1:return False
-        check={}
-        check[0]=-1
-        sm=0
+        rem_map={}
+        rem_map[0]=-1
+        prefix_sum=0
         for i in range(len(nums)):
-            sm+=nums[i]
-            n=sm%k
-            if n in check :
+            prefix_sum+=nums[i]
+            rem=prefix_sum%k
+            if rem in rem_map :
 
-                if i-check[n]>1:
+                if i-rem_map[rem]>1:
                     return True
             else:
-                check[n]=i
+                rem_map[rem]=i
         return False
 
 
