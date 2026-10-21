@@ -1,6 +1,6 @@
 class Solution:
     def numSubarraysWithSum(self, nums: list[int], goal: int) -> int:
-
+    #sliding window :-
         count=0
         left=0
         right=0
