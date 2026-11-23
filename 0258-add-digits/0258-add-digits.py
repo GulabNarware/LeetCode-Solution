@@ -1,14 +1,12 @@
 class Solution:
     def addDigits(self, num: int) -> int:
-        if len(str(num))==1:
+        if num<=9:
             return num
 
         while num>9:
-            digit=num%10
 
-            num=num//10
+            n=num%10
+            num//=10
+            num+=n
 
-            num+=digit
-
-        return num         
-
+        return num
